@@ -1,0 +1,40 @@
+//www.plantuml.com/plantuml/png/dLInRjDG5DtVLxmncRhN0vKGOs5WGc9fYADQIfqeSIM632I50ahL21OcYFW3r-gZpxXsVk7UF-BSvwSuJeK47ThaMlUUS-wvnpcQ9YUJvFnig5GI9SFmKDDtIlaZMPvJGOPAicGqtL2Aig2ACartbBf_j45TKDcqtUB1HkDxoU-fudTq3x1Br5PJfG5fW6IKcj5QHlaAC814quACr3Fb1Ab3-eQ7d-IX1dYAMLu0BnKclkGB_Je-U7FIY-8mEHXFHeDe60QO-YfgU0ubhhNa9PbTwa2uVr9AEIzcwFy1uet3pSY2uMflCjF7KTplZTw2RtmwYaFT2VjHylHycepEmibnr0DnLr1zdmC5KqdL5jBhDWwm5eZ2SxG80wsYWUxG6YCMwnSmhdQPLrhqqvquNyg9lElvawvEJiEuy-hPowwGYrEx-yXwXcvvYRyB_Yo7siFWLQ32uHIxFNyX46ioCkDFB4b8_migxaS39JXeXmiEpOl9CBkV6a3DwsZLW2dzTfd90rMxyQKE7ozzz7m3NsEKVhbu0jPvLRR3oqllZlRs8DscrSMhMjXDmo7wCbwu_EACKD6O8th-bjtsEs6fa7NdUnT-gASHR1z80U0_U9Otdjds9HzpWHnHTvUssjienxx6kGtTQwgsuIxylDrPa3zix-y_yAACrH4A_CZy0G00
+
+@startuml
+
+title: Начисление баллов за заполнение доп информации о себе
+
+|Пользователь|
+start
+:Внес данные о себе на странице \n/cabinet/profile \nили на посадочной;
+
+|Сайт|
+:Отправить данные в Mindbox \nphone (editCustomerMibile);
+
+|Mindbox|
+:Обновить ранее внесенные данные; 
+if (Пришли поля без значений?) then(YES)
+:Оставить предыдущие значения;
+else (NO)
+:Перезаписать предыдущие значения;
+endif
+
+:Проверить выполнение условие акций;
+
+if (Баллы за акцию уже были начислены?) then (YES)
+:Не начислять баллы повторно;
+
+else (NO)
+if (Пользователь заполнил все данные?) then (YES)
+:Начислить баллы за выполнение условий акции;
+else (NO)
+:Проверить выполнение условий \nпри следующем обновлении данных;
+endif
+
+endif
+
+stop
+@enduml
+
+stop
+@enduml
